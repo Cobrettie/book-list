@@ -13,7 +13,30 @@ function UI() {}
 // Add Book To List
 // UI prototype set to a function, function takes in book object
 UI.prototype.addBookToList = function (book) {
-    console.log(book);
+    const list = document.getElementById('book-list');
+
+    // Create table row (tr) element 
+    const row = document.createElement('tr');
+
+
+    // Insert columns - can also use textContent =;
+    row.innerHTML = `
+    <td>${book.title}</td>
+    <td>${book.author}</td>
+    <td>${book.isbn}</td>
+    <td><a href="#" class="delete">X or Remove</a></td>
+    `;
+
+    // append (add) to list
+    list.appendChild(row);
+}
+
+// Clear input fields
+UI.prototype.clearFields = function () {
+    // setting values to nothing
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('isbn').value = '';
 }
 
 
@@ -32,6 +55,9 @@ document.getElementById('book-form').addEventListener('submit', function (event)
 
     // Add book to list
     ui.addBookToList(book);
+
+    // Clear input fields
+    ui.clearFields(book);
 
     // prevent form continiously submitting
     event.preventDefault();
