@@ -10,6 +10,12 @@ function Book(title, author, isbn) {
 // UI Constructor - set of prototype methods to add book to list, delete, show alerts on page
 function UI() {}
 
+// Add Book To List
+// UI prototype set to a function, function takes in book object
+UI.prototype.addBookToList = function (book) {
+    console.log(book);
+}
+
 
 // Event Listeners
 document.getElementById('book-form').addEventListener('submit', function (event) {
@@ -20,7 +26,12 @@ document.getElementById('book-form').addEventListener('submit', function (event)
 
     // Instantiate book
     const book = new Book(title, author, isbn);
-    console.log(book);
+
+    // Instantiate UI 
+    const ui = new UI();
+
+    // Add book to list
+    ui.addBookToList(book);
 
     // prevent form continiously submitting
     event.preventDefault();
